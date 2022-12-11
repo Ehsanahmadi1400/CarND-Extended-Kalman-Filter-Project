@@ -5,6 +5,8 @@
 #include "FusionEKF.h"
 #include "tools.h"
 
+using namespace std;
+
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 using std::string;
@@ -126,9 +128,13 @@ int main() {
           estimate(3) = v2;
         
           estimations.push_back(estimate);
-
+          
           VectorXd RMSE = tools.CalculateRMSE(estimations, ground_truth);
-
+          cout << " ******************************************** " << endl;
+          cout << endl;
+          cout << RMSE << endl;
+          cout << endl;
+          cout << " *********************************************" << endl;
           json msgJson;
           msgJson["estimate_x"] = p_x;
           msgJson["estimate_y"] = p_y;
